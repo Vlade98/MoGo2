@@ -71,6 +71,8 @@ const prevSlide = function () {
   goToSlide(curSlide);
 };
 
+// setInterval(nextSlide, 2000);
+
 btnRight.addEventListener("click", nextSlide);
 btnLeft.addEventListener("click", prevSlide);
 
@@ -92,3 +94,79 @@ for (let i = 0; i < btnsCloseModal.length; i++) {
     overlay.classList.add("hidden");
   });
 }
+
+// Logo
+const logoSlides = document.querySelectorAll(".logo-item");
+const logos = document.querySelector(".logos");
+console.log(logoSlides);
+
+let curLogo = -4;
+const maxLogos = logoSlides.length;
+
+const goToLogo = function (logos) {
+  logoSlides.forEach(
+    (s, i) => (s.style.transform = `translateX(${100 * (i - logos)}%)`)
+  );
+};
+goToLogo(-4);
+
+const nextLogo = function () {
+  if (curLogo === maxLogos + 3) {
+    curLogo = -4;
+  } else {
+    curLogo++;
+  }
+
+  goToLogo(curLogo);
+};
+
+const prevLogo = function () {
+  if (curLogo === -4) {
+    curLogo = maxLogos + 3;
+  } else {
+    curLogo--;
+  }
+  goToLogo(curLogo);
+};
+
+setInterval(nextLogo, 3000);
+// setInterval(prevLogo, 1500);
+
+// Testimonial slider
+
+const testimonialSlides = document.querySelectorAll(".container--testimonial");
+console.log(testimonialSlides);
+const testimonialBtnLeft = document.querySelector(".testimonial-btn-left");
+const testimonialBtnRight = document.querySelector(".testimonial-btn-right");
+
+let curTSlide = 0;
+const maxTSlide = testimonialSlides.length;
+
+const goToTSlide = function (slide) {
+  testimonialSlides.forEach(
+    (s, i) => (s.style.transform = `translateX(${100 * (i - slide)}%)`)
+  );
+};
+goToTSlide(0);
+
+const nextTSlide = function () {
+  if (curTSlide === maxTSlide - 1) {
+    curTSlide = 0;
+  } else {
+    curTSlide++;
+  }
+
+  goToTSlide(curTSlide);
+};
+
+const prevTSlide = function () {
+  if (curTSlide === 0) {
+    curTSlide = maxTSlide - 1;
+  } else {
+    curTSlide--;
+  }
+  goToTSlide(curTSlide);
+};
+
+testimonialBtnRight.addEventListener("click", nextTSlide);
+testimonialBtnLeft.addEventListener("click", prevTSlide);
