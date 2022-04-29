@@ -21,7 +21,7 @@ font-family: 'Kaushan Script', cursive;
       rgba(243, 129, 129, 0.75),
       rgba(252, 227, 138, 0.75)
     ),
-    url("/img/Banner.jpg");
+    url("../../Mogo-2/img/Banner.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -598,13 +598,19 @@ font-family: 'Kaushan Script', cursive;
 } */
 
 .testimonial-slider {
-  position: relative;
+  max-width: 100rem;
   height: 30rem;
+  margin: 0 auto;
+  position: relative;
+
+  overflow: hidden;
+
   display: flex;
   align-items: center;
 }
 
 .container--testimonial {
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(4, auto);
   padding: 3.2rem !important;
@@ -679,7 +685,7 @@ font-family: 'Kaushan Script', cursive;
       rgba(255, 255, 255, 0.85),
       rgba(255, 255, 255, 0.75)
     ),
-    url(/img/testimonials/testimonials-background.png);
+    url(../../Mogo-2/img/testimonials/testimonials-background.png);
   background-size: cover;
   background-position: center;
 }
@@ -798,7 +804,7 @@ font-family: 'Kaushan Script', cursive;
       rgba(255, 255, 255, 0.85),
       rgba(255, 255, 255, 0.75)
     ),
-    url(/img/map/map.png);
+    url(../../Mogo-2/img/map/map.png);
   background-position: center;
   background-size: cover;
   padding: 2.4rem 0 6.2rem 0 !important;
