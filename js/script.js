@@ -112,24 +112,25 @@ goToLogo(-4);
 
 const nextLogo = function () {
   if (curLogo === maxLogos + 3) {
-    curLogo = -4;
+    logoSlides.forEach(slide => (slide.style.display = "none"));
+    curLogo = -5;
   } else {
+    logoSlides.forEach(slide => (slide.style.display = "flex"));
     curLogo++;
   }
-
   goToLogo(curLogo);
 };
 
-const prevLogo = function () {
-  if (curLogo === -4) {
-    curLogo = maxLogos + 3;
-  } else {
-    curLogo--;
-  }
-  goToLogo(curLogo);
-};
+// const prevLogo = function () {
+//   if (curLogo === -4) {
+//     curLogo = maxLogos + 3;
+//   } else {
+//     curLogo--;
+//   }
+//   goToLogo(curLogo);
+// };
 
-setInterval(nextLogo, 3000);
+setInterval(nextLogo, 2000);
 // setInterval(prevLogo, 1500);
 
 // Testimonial slider
