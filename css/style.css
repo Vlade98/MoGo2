@@ -291,7 +291,7 @@ font-family: 'Kaushan Script', cursive;
       rgba(255, 255, 255, 0.75),
       rgba(255, 255, 255, 0.75)
     ),
-    url("../img/features/background.png");
+    url("../../Mogo-2/img/features/background.png");
   background-size: cover;
   background-position: center;
   height: 90vh;
