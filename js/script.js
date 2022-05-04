@@ -1,83 +1,31 @@
 "use strict";
 
+// Mobile navigation
 const btnNavEl = document.querySelector(".btn-mobile-nav");
 const headerEl = document.querySelector(".header");
-const menuBtn = document.querySelector(".icon-mobile-nav");
 
 btnNavEl.addEventListener("click", function () {
   headerEl.classList.toggle("nav-open");
 });
 
-// Dropdown
-const btnService1 = document.querySelector(".service-btn-1");
-const btnService2 = document.querySelector(".service-btn-2");
-const btnService3 = document.querySelector(".service-btn-3");
-const contentService1 = document.querySelector(".content-2");
-const contentService2 = document.querySelector(".content-3");
-const contentService3 = document.querySelector(".content-4");
+// DROPDOWN
+const dropdown = (function () {
+  const btnService = document.querySelectorAll(".service-btn");
+  const contentService = document.querySelectorAll(".content");
 
-btnService1.addEventListener("click", function () {
-  contentService1.classList.toggle("description-hidden");
-  contentService2.classList.add("description-hidden");
-  contentService3.classList.add("description-hidden");
-});
-
-btnService2.addEventListener("click", function () {
-  contentService2.classList.toggle("description-hidden");
-  contentService1.classList.add("description-hidden");
-  contentService3.classList.add("description-hidden");
-});
-
-btnService3.addEventListener("click", function () {
-  contentService3.classList.toggle("description-hidden");
-  contentService1.classList.add("description-hidden");
-  contentService2.classList.add("description-hidden");
-});
-
-// Slider
-const slides = document.querySelectorAll(".container--service");
-const btnLeft = document.querySelector(".slider__btn--left");
-const btnRight = document.querySelector(".slider__btn--right");
-
-let curSlide = 0;
-const maxSlide = slides.length;
-
-const slider = document.querySelector(".service-footer");
-
-const goToSlide = function (slide) {
-  slides.forEach(
-    (s, i) => (s.style.transform = `translateX(${100 * (i - slide)}%)`)
-  );
-};
-goToSlide(0);
-
-// Next slide
-const nextSlide = function () {
-  if (curSlide === maxSlide - 1) {
-    curSlide = 0;
-  } else {
-    curSlide++;
+  for (let i = 0; i < btnService.length; i++) {
+    btnService[i].addEventListener("click", function () {
+      contentService[i].classList.toggle("description-hidden");
+      if (contentService[i].classList.contains("description-hidden")) {
+        btnService[i].style.transform = "rotate(0deg)";
+      } else {
+        btnService[i].style.transform = "rotate(180deg)";
+      }
+    });
   }
-
-  goToSlide(curSlide);
-};
-
-const prevSlide = function () {
-  if (curSlide === 0) {
-    curSlide = maxSlide - 1;
-  } else {
-    curSlide--;
-  }
-  goToSlide(curSlide);
-};
-
-// setInterval(nextSlide, 2000);
-
-btnRight.addEventListener("click", nextSlide);
-btnLeft.addEventListener("click", prevSlide);
+})();
 
 // MODAL WINDOW
-
 const modal = document.querySelectorAll(".modal");
 const overlay = document.querySelector(".overlay");
 const btnsOpenModal = document.querySelectorAll(".img-container-modal");
@@ -95,79 +43,84 @@ for (let i = 0; i < btnsCloseModal.length; i++) {
   });
 }
 
-// Logo
-const logoSlides = document.querySelectorAll(".logo-item");
-const logos = document.querySelector(".logos");
-console.log(logoSlides);
+// LOGO SLIDER
+const logoSlider = (function () {
+  const logoSlides = document.querySelectorAll(".logo-item");
+  const logos = document.querySelector(".logos");
 
-let curLogo = -4;
-const maxLogos = logoSlides.length;
+  let curLogo = -logoSlides.length + 2;
+  const maxLogos = logoSlides.length;
 
-const goToLogo = function (logos) {
-  logoSlides.forEach(
-    (s, i) => (s.style.transform = `translateX(${100 * (i - logos)}%)`)
-  );
-};
-goToLogo(-4);
-
-const nextLogo = function () {
-  if (curLogo === maxLogos + 3) {
-    logoSlides.forEach(slide => (slide.style.display = "none"));
-    curLogo = -5;
-  } else {
-    logoSlides.forEach(slide => (slide.style.display = "flex"));
-    curLogo++;
-  }
+  const goToLogo = function (logos) {
+    logoSlides.forEach(
+      (s, i) => (s.style.transform = `translateX(${100 * (i - logos)}%)`)
+    );
+  };
   goToLogo(curLogo);
-};
 
-// const prevLogo = function () {
-//   if (curLogo === -4) {
-//     curLogo = maxLogos + 3;
-//   } else {
-//     curLogo--;
-//   }
-//   goToLogo(curLogo);
-// };
+  const nextLogo = function () {
+    if (curLogo === maxLogos + maxLogos / 2) {
+      logoSlides.forEach(slide => (slide.style.display = "none"));
+      curLogo = -maxLogos + 1;
+    } else {
+      logoSlides.forEach(slide => (slide.style.display = "flex"));
+      curLogo++;
+    }
+    goToLogo(curLogo);
+  };
 
-setInterval(nextLogo, 2000);
-// setInterval(prevLogo, 1500);
+  setInterval(nextLogo, 1500);
+})();
 
-// Testimonial slider
-
-const testimonialSlides = document.querySelectorAll(".container--testimonial");
-console.log(testimonialSlides);
-const testimonialBtnLeft = document.querySelector(".testimonial-btn-left");
-const testimonialBtnRight = document.querySelector(".testimonial-btn-right");
-
-let curTSlide = 0;
-const maxTSlide = testimonialSlides.length;
-
-const goToTSlide = function (slide) {
-  testimonialSlides.forEach(
-    (s, i) => (s.style.transform = `translateX(${100 * (i - slide)}%)`)
+// SLIDERS
+const sliders = (function () {
+  const testimonialSlides = document.querySelectorAll(
+    ".container--testimonial"
   );
-};
-goToTSlide(0);
+  const testimonialBtnLeft = document.querySelector(".testimonial-btn-left");
+  const testimonialBtnRight = document.querySelector(".testimonial-btn-right");
 
-const nextTSlide = function () {
-  if (curTSlide === maxTSlide - 1) {
-    curTSlide = 0;
-  } else {
-    curTSlide++;
-  }
+  const slides = document.querySelectorAll(".container--service");
+  const btnLeft = document.querySelector(".slider__btn--left");
+  const btnRight = document.querySelector(".slider__btn--right");
 
-  goToTSlide(curTSlide);
-};
+  let curSlide = 0;
+  const maxTSlide = testimonialSlides.length;
+  const maxSlide = slides.length;
 
-const prevTSlide = function () {
-  if (curTSlide === 0) {
-    curTSlide = maxTSlide - 1;
-  } else {
-    curTSlide--;
-  }
-  goToTSlide(curTSlide);
-};
+  const goToSlide = function (sl, slide) {
+    sl.forEach(
+      (s, i) => (s.style.transform = `translateX(${100 * (i - slide)}%)`)
+    );
+  };
+  goToSlide(testimonialSlides, 0);
+  goToSlide(slides, 0);
 
-testimonialBtnRight.addEventListener("click", nextTSlide);
-testimonialBtnLeft.addEventListener("click", prevTSlide);
+  const nextS = function (maxSlide, sli) {
+    if (curSlide === maxSlide - 1) {
+      curSlide = 0;
+    } else {
+      curSlide++;
+    }
+    goToSlide(sli, curSlide);
+  };
+
+  const prevS = function (maxSlide, sli) {
+    if (curSlide === 0) {
+      curSlide = maxSlide - 1;
+    } else {
+      curSlide--;
+    }
+    goToSlide(sli, curSlide);
+  };
+
+  testimonialBtnLeft.addEventListener("click", () =>
+    prevS(maxTSlide, testimonialSlides)
+  );
+  testimonialBtnRight.addEventListener("click", () =>
+    nextS(maxTSlide, testimonialSlides)
+  );
+
+  btnLeft.addEventListener("click", () => prevS(maxSlide, slides));
+  btnRight.addEventListener("click", () => nextS(maxSlide, slides));
+})();

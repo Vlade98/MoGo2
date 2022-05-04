@@ -21,7 +21,7 @@ font-family: 'Kaushan Script', cursive;
       rgba(243, 129, 129, 0.75),
       rgba(252, 227, 138, 0.75)
     ),
-    url("../../Mogo-2/img/Banner.jpg");
+    url("../img/Banner.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -291,7 +291,7 @@ font-family: 'Kaushan Script', cursive;
       rgba(255, 255, 255, 0.75),
       rgba(255, 255, 255, 0.75)
     ),
-    url("../../Mogo-2/img/features/background.png");
+    url("../img/features/background.png");
   background-size: cover;
   background-position: center;
   height: 90vh;
@@ -342,33 +342,33 @@ font-family: 'Kaushan Script', cursive;
   border: 1px solid #ccc;
 }
 
-.services-list .first-row .content {
+.services-list .first-row .content-header {
   display: flex;
   align-items: center;
   padding: 0.8rem;
   border-bottom: 1px solid #ccc;
 }
 
-.services-list .content .photo {
+.services-list .content-header .photo {
   font-size: 3.2rem;
   color: #95e1d3;
   margin-right: 0.5rem;
 }
-.services-list .content p {
+
+.services-list .content-header p {
   text-transform: uppercase;
   font-size: 1.6rem;
   font-weight: 600;
   color: #333;
 }
 
-.services-list .content button {
+.services-list .content-header button {
   font-size: 3.2rem;
   color: #ccc;
   margin-left: auto;
-  /* transform: rotate(); */
 }
 
-.services-list .content .icon:hover {
+.services-list .content-header .icon:hover {
   cursor: pointer;
   color: #666;
 }
@@ -406,8 +406,8 @@ font-family: 'Kaushan Script', cursive;
   width: 100%;
 }
 
-.second-row .content,
-.third-row .content {
+.second-row .content-header,
+.third-row .content-header {
   display: flex;
   align-items: center;
   padding: 0.8rem;
@@ -553,7 +553,7 @@ font-family: 'Kaushan Script', cursive;
   align-items: center;
   justify-content: center;
 
-  transition: transform 2s;
+  transition: transform 1.5s;
   padding: 5rem;
 }
 
